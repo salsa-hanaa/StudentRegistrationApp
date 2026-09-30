@@ -1,0 +1,86 @@
+﻿<Window x:Class="StudentRegistrationApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Student Registration - Level 2" Height="750" Width="850" 
+        WindowStartupLocation="CenterScreen" Background="#FF8BCFE6">
+
+    <Grid Margin="25">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="360"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- FORM REGISTRASI -->
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="0,0,10,0">
+                <TextBlock Text="STUDENT REGISTRATION" FontSize="20" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                <TextBlock Text="NIM"/>
+                <TextBox x:Name="txtNim" Height="35" Margin="0,5,0,10" VerticalContentAlignment="Center" Background="#FFE5F8FF"/>
+
+                <TextBlock Text="Nama Mahasiswa"/>
+                <TextBox x:Name="txtNama" Height="35" Margin="0,5,0,10" VerticalContentAlignment="Center" Background="#FFE5F8FF"/>
+
+                <TextBlock Text="Program Studi"/>
+                <ComboBox x:Name="cmbProdi" Height="35" Margin="0,5,0,10" VerticalContentAlignment="Center">
+                    <ComboBox.Background>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="#FFF0F0F0"/>
+                            <GradientStop Color="#FFE5F8FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </ComboBox.Background>
+                    <ComboBoxItem Content="Teknik Informatika"/>
+                    <ComboBoxItem Content="Sistem Informasi"/>
+                    <ComboBoxItem Content="Manajemen"/>
+                    <ComboBoxItem Content="Akuntansi"/>
+                </ComboBox>
+
+                <TextBlock Text="Jenis Kelamin"/>
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,10">
+                    <RadioButton x:Name="rbLaki" Content="Laki-laki" Margin="0,0,20,0"/>
+                    <RadioButton x:Name="rbPerempuan" Content="Perempuan"/>
+                </StackPanel>
+
+                <TextBlock Text="Tanggal Lahir"/>
+                <DatePicker x:Name="dpTanggalLahir" Height="35" Margin="0,5,0,10" VerticalContentAlignment="Center"/>
+
+                <TextBlock Text="Nomor Telepon"/>
+                <TextBox x:Name="txtNoTelepon" Height="35" Margin="0,5,0,10" VerticalContentAlignment="Center" Background="#FFE5F8FF"/>
+
+                <TextBlock Text="Alamat"/>
+                <TextBox x:Name="txtAlamat" Height="60" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,5,0,15" Background="#FFE5F8FF"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,10">
+                    <Button Content="Simpan" Width="80" Height="35" Margin="0,0,8,0" Click="BtnSimpan_Click"/>
+                    <Button Content="Update" Width="80" Height="35" Margin="0,0,8,0" Click="BtnUpdate_Click"/>
+                    <Button Content="Reset" Width="80" Height="35" Click="BtnReset_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- DAFTAR DATA MAHASISWA  -->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- HEADER -->
+            <TextBlock Grid.Row="0" Text="DATA MAHASISWA" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+            <!-- SEARCH BAR -->
+            <StackPanel Grid.Row="1" Margin="0,0,0,10">
+                <TextBlock Text="Cari (NIM / Nama / Prodi):" FontSize="12" Margin="0,0,0,3"/>
+                <TextBox x:Name="txtSearch" Height="30" VerticalContentAlignment="Center" Background="#FFE5F8FF" TextChanged="TxtSearch_TextChanged"/>
+            </StackPanel>
+
+            <ListBox x:Name="lstMahasiswa" Grid.Row="2" Margin="0,0,0,10" Background="#FFE5F8FF" SelectionChanged="LstMahasiswa_SelectionChanged"/>
+            <TextBlock x:Name="lblCounter" Grid.Row="3" Text="Jumlah Mahasiswa: 0" FontSize="14" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Left"/>
+            <Button Grid.Row="4" Content="Hapus Data Terpilih" Width="150" Height="35" HorizontalAlignment="Right" Click="BtnHapus_Click"/>
+        </Grid>
+    </Grid>
+</Window>
